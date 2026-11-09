@@ -1,0 +1,3 @@
+-- Custom SQL migration file, put your code below! --
+-- Initial Drizzle migration marker. The schema was generated from the checked-in
+-- TypeScript schema in the following migration.

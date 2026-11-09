@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Momentus</title>
+  <rect width="64" height="64" rx="32" fill="#2e4038"/>
+  <circle cx="32" cy="32" r="23.5" stroke="#cfb58b"/>
+  <path d="M20 40V25h4v3.4c.7-2.3 2.4-3.8 4.9-3.8 2.4 0 4 1.2 4.7 3.6.8-2.3 2.5-3.6 5-3.6 3.6 0 5.5 2.5 5.5 6.7V40h-4.2v-9.1c0-2.6-.9-3.9-2.7-3.9-1.9 0-3 1.6-3 4.2V40H30v-9.1c0-2.6-.9-3.9-2.7-3.9-1.9 0-3.1 1.6-3.1 4.2V40H20Z" fill="#f6f5ef"/>
+</svg>

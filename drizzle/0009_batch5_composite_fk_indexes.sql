@@ -1,0 +1,2 @@
+-- Composite event-scoped unique indexes were moved into 0007/0008 before dependent foreign keys.
+-- This journal entry records the generated Drizzle snapshot alignment; no database operation is required here.

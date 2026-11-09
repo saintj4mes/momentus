@@ -1,0 +1,76 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793810045900,
+      "tag": "0000_mvp_core",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793810065244,
+      "tag": "0001_far_vertigo",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793810076405,
+      "tag": "0002_rsvp_security",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793868382950,
+      "tag": "0003_sour_demogoblin",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793868479354,
+      "tag": "0004_open_ronan",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793868544438,
+      "tag": "0005_clean_mattie_franklin",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793882723588,
+      "tag": "0006_solid_hydra",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793891504256,
+      "tag": "0007_batch5_rsvp_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793891576002,
+      "tag": "0008_batch5_private_answers",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793891682218,
+      "tag": "0009_batch5_composite_fk_indexes",
+      "breakpoints": true
+    }
+  ]
+}

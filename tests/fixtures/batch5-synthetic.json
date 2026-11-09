@@ -1,0 +1,52 @@
+{
+  "notice": "Entirely synthetic development fixtures. Never load into a customer or production database.",
+  "clients": [
+    {
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Client A — Wedding",
+      "userId": "a1000000-0000-4000-8000-000000000101",
+      "eventId": "a1000000-0000-4000-8000-000000000201",
+      "event": "Avery and Jordan Celebration",
+      "eventType": "wedding",
+      "capacity": 60,
+      "registrationMode": "private_invitation",
+      "questions": [
+        { "key": "meal_choice", "label": "Meal choice", "type": "dropdown", "required": true, "options": ["vegetarian", "standard"] }
+      ],
+      "invitation": { "id": "a1000000-0000-4000-8000-000000000301", "token": "synthetic-only-token-a" },
+      "guests": ["Alex Example", "Casey Example"]
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000001",
+      "name": "Client B — Corporate Conference",
+      "userId": "b2000000-0000-4000-8000-000000000101",
+      "eventId": "b2000000-0000-4000-8000-000000000201",
+      "event": "Northstar Product Forum",
+      "eventType": "conference",
+      "capacity": 2,
+      "registrationMode": "approval",
+      "questions": [
+        { "key": "company_name", "label": "Company", "type": "short_text", "required": true, "options": [] },
+        { "key": "accessibility", "label": "Accessibility needs", "type": "long_text", "required": false, "options": [] }
+      ],
+      "invitation": { "id": "b2000000-0000-4000-8000-000000000301", "token": "synthetic-only-token-b" },
+      "guests": ["Taylor Example", "Morgan Example"]
+    },
+    {
+      "id": "c3000000-0000-4000-8000-000000000001",
+      "name": "Client C — Fun Run",
+      "userId": "c3000000-0000-4000-8000-000000000101",
+      "eventId": "c3000000-0000-4000-8000-000000000201",
+      "event": "Harbor City Fun Run",
+      "eventType": "fun_run",
+      "capacity": 1,
+      "registrationMode": "open",
+      "waitlistEnabled": true,
+      "questions": [
+        { "key": "shirt_size", "label": "Shirt size", "type": "radio", "required": true, "options": ["S", "M", "L", "XL"] }
+      ],
+      "invitation": null,
+      "guests": ["Jamie Example"]
+    }
+  ]
+}
