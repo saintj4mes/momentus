@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="vip-bg" x1="0" y1="0" x2="0" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1A1412" />
+      <stop offset="40%" stop-color="#241B17" />
+      <stop offset="70%" stop-color="#2C1F1A" />
+      <stop offset="100%" stop-color="#140F0D" />
+    </linearGradient>
+    <radialGradient id="vip-amber-glow" cx="300" cy="220" r="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FCD34D" stop-opacity="0.45" />
+      <stop offset="45%" stop-color="#D97706" stop-opacity="0.25" />
+      <stop offset="85%" stop-color="#92400E" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#1A1412" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="vip-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+    <filter id="vip-blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" />
+    </filter>
+  </defs>
+
+  <!-- Deep Speakeasy Lounge Background -->
+  <rect width="600" height="380" fill="url(#vip-bg)" />
+
+  <!-- Ambient Amber & Candle Glow -->
+  <circle cx="300" cy="220" r="180" fill="url(#vip-amber-glow)" />
+
+  <!-- Art Deco Geometric Arches Behind Backbar -->
+  <g stroke="url(#vip-gold)" stroke-width="1.2" stroke-opacity="0.45" fill="none">
+    <!-- Center Grand Arch -->
+    <path d="M 200 320 L 200 180 A 100 100 0 0 1 400 180 L 400 320" />
+    <path d="M 220 320 L 220 185 A 80 80 0 0 1 380 185 L 380 320" stroke-opacity="0.25" />
+    <path d="M 240 320 L 240 190 A 60 60 0 0 1 360 190 L 360 320" stroke-opacity="0.15" />
+    <!-- Sunburst Lines in Arch -->
+    <line x1="300" y1="180" x2="300" y2="120" stroke-opacity="0.3" />
+    <line x1="300" y1="180" x2="250" y2="135" stroke-opacity="0.25" />
+    <line x1="300" y1="180" x2="350" y2="135" stroke-opacity="0.25" />
+    <line x1="300" y1="180" x2="220" y2="160" stroke-opacity="0.2" />
+    <line x1="300" y1="180" x2="380" y2="160" stroke-opacity="0.2" />
+  </g>
+
+  <!-- Backlit Cocktail Bottle Shelving Silhouettes -->
+  <g fill="#1F1612" stroke="#D4AF37" stroke-width="0.8" stroke-opacity="0.4">
+    <!-- Shelf 1 -->
+    <rect x="180" y="240" width="240" height="5" rx="1" fill="#D4AF37" fill-opacity="0.6" />
+    <!-- Bottles on Shelf 1 -->
+    <rect x="200" y="210" width="14" height="30" rx="2" fill="#B45309" fill-opacity="0.8" />
+    <rect x="225" y="200" width="18" height="40" rx="2" fill="#D97706" fill-opacity="0.75" />
+    <rect x="255" y="205" width="16" height="35" rx="3" fill="#92400E" fill-opacity="0.85" />
+    <rect x="330" y="202" width="17" height="38" rx="2" fill="#D97706" fill-opacity="0.8" />
+    <rect x="360" y="212" width="15" height="28" rx="2" fill="#B45309" fill-opacity="0.7" />
+    <rect x="385" y="205" width="14" height="35" rx="2" fill="#F59E0B" fill-opacity="0.85" />
+  </g>
+
+  <!-- Hanging Amber Edison Pendant Bulbs with Filaments -->
+  <g>
+    <!-- Wire 1 -->
+    <line x1="160" y1="0" x2="160" y2="160" stroke="#78350F" stroke-width="1.2" />
+    <circle cx="160" cy="165" r="7" fill="#FCD34D" filter="url(#vip-blur)" />
+    <circle cx="160" cy="165" r="4" fill="#FFFBEB" />
+    
+    <!-- Wire 2 -->
+    <line x1="440" y1="0" x2="440" y2="150" stroke="#78350F" stroke-width="1.2" />
+    <circle cx="440" cy="155" r="7" fill="#FCD34D" filter="url(#vip-blur)" />
+    <circle cx="440" cy="155" r="4" fill="#FFFBEB" />
+    
+    <!-- Wire 3 -->
+    <line x1="300" y1="0" x2="300" y2="135" stroke="#78350F" stroke-width="1" />
+    <circle cx="300" cy="140" r="5" fill="#FCD34D" filter="url(#vip-blur)" />
+    <circle cx="300" cy="140" r="3" fill="#FFFBEB" />
+  </g>
+
+  <!-- Polished Black Marble Speakeasy Bar Counter Top -->
+  <g>
+    <ellipse cx="300" cy="320" rx="250" ry="32" fill="#0C0A09" stroke="#D4AF37" stroke-width="1.5" />
+    <ellipse cx="300" cy="316" rx="235" ry="26" fill="#1C1917" />
+    <!-- Marble vein line -->
+    <path d="M 120 318 Q 240 312 300 320 T 480 315" stroke="#D4AF37" stroke-width="0.8" stroke-opacity="0.3" fill="none" />
+
+    <!-- Crystal Coupe Glasses & Champagne Bubbles -->
+    <g stroke="#FDE68A" stroke-width="1.2" fill="none">
+      <!-- Left Coupe Glass -->
+      <path d="M 210 305 Q 225 315 240 305" />
+      <line x1="225" y1="315" x2="225" y2="330" />
+      <line x1="218" y1="330" x2="232" y2="330" />
+      <circle cx="225" cy="308" r="1.5" fill="#FDE68A" />
+      <circle cx="228" cy="304" r="1.2" fill="#FDE68A" />
+
+      <!-- Center-Right Coupe Glass -->
+      <path d="M 360 305 Q 375 315 390 305" />
+      <line x1="375" y1="315" x2="375" y2="330" />
+      <line x1="368" y1="330" x2="382" y2="330" />
+      <circle cx="375" cy="308" r="1.5" fill="#FDE68A" />
+      <circle cx="372" cy="304" r="1.2" fill="#FDE68A" />
+    </g>
+
+    <!-- Floating Gold Foil Keycard on Bar Top -->
+    <g transform="translate(280, 298)">
+      <rect width="40" height="25" rx="3" fill="#292524" stroke="#D4AF37" stroke-width="1.2" />
+      <circle cx="290" cy="310" r="4" fill="none" stroke="#D4AF37" stroke-width="0.8" />
+      <line x1="285" y1="316" x2="315" y2="316" stroke="#D4AF37" stroke-width="0.6" />
+    </g>
+  </g>
+
+  <!-- Floating Microsite Preview Card Header (Browser Mockup Overlaid) -->
+  <g transform="translate(130, 24)">
+    <!-- Browser Top Bar Container -->
+    <rect width="340" height="96" rx="6" fill="#FAF6ED" stroke="#CBB184" stroke-width="1.2" />
+    <rect x="0" y="0" width="340" height="24" rx="6" fill="#1C1412" />
+    
+    <!-- Window controls -->
+    <circle cx="12" cy="12" r="3" fill="#E06C53" />
+    <circle cx="22" cy="12" r="3" fill="#E5B95A" />
+    <circle cx="32" cy="12" r="3" fill="#62A375" />
+    
+    <!-- URL Pill -->
+    <rect x="70" y="4" width="200" height="16" rx="3" fill="#100B09" />
+    <text x="170" y="15" font-family="'Aptos', sans-serif" font-size="7.5" fill="#D4AF37" text-anchor="middle">🔒 momentus.events/obsidian-vip</text>
+    
+    <!-- Microsite Content Preview -->
+    <text x="170" y="44" font-family="'Iowan Old Style', Georgia, serif" font-size="14" font-weight="600" fill="#1C1412" text-anchor="middle" letter-spacing="0.5">The Obsidian Room · Private Society</text>
+    <text x="170" y="58" font-family="'Aptos', sans-serif" font-size="8" fill="#8C5C48" text-anchor="middle" letter-spacing="1.5">FOUNDERS MIDNIGHT DINNER · SALCEDO MAKATI</text>
+    
+    <!-- Live RSVP Pill Tag -->
+    <rect x="100" y="68" width="140" height="18" rx="9" fill="#1C1412" />
+    <text x="170" y="80" font-family="'Aptos', sans-serif" font-size="7.5" font-weight="700" fill="#FDE68A" text-anchor="middle" letter-spacing="1">🔒 85 ENCRYPTED KEYCARDS</text>
+  </g>
+
+  <!-- Warm Sparkle & Ambient Bokeh -->
+  <circle cx="150" cy="220" r="16" fill="#F59E0B" fill-opacity="0.18" filter="url(#vip-blur)" />
+  <circle cx="450" cy="230" r="20" fill="#D97706" fill-opacity="0.15" filter="url(#vip-blur)" />
+  <circle cx="270" cy="170" r="10" fill="#FCD34D" fill-opacity="0.22" filter="url(#vip-blur)" />
+</svg>

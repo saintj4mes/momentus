@@ -10,6 +10,8 @@ export async function proxy(request: NextRequest) {
     process.env.NODE_ENV === "development" &&
     process.env.MOMENTUS_LOCAL_DEMO_ENABLED === "true" &&
     (request.nextUrl.pathname === "/sign-in" ||
+      request.nextUrl.pathname === "/login" ||
+      request.nextUrl.pathname === "/signin" ||
       request.nextUrl.pathname.startsWith("/admin") ||
       request.nextUrl.pathname.startsWith("/event/") ||
       request.nextUrl.pathname.startsWith("/demo/microsites/"));
