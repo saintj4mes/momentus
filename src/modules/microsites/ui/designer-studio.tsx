@@ -9,7 +9,7 @@ import type {
 } from "grapesjs";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { saveMicrositeDraft } from "../actions";
+import { saveMicrositeDraft, publishMicrositeSnapshot } from "../actions";
 import {
   type AssistantRequest,
   type DesignOperation,
@@ -449,6 +449,8 @@ export function DesignerStudio({
   const [assistantProvider, setAssistantProvider] = useState<
     "openai" | "demo" | null
   >(null);
+  const [publishing, setPublishing] = useState(false);
+  const [publishedUrl, setPublishedUrl] = useState<string | null>(null);
 
   const persistDraft = useCallback(
     (editor: Editor) => {
@@ -955,6 +957,48 @@ export function DesignerStudio({
     setStatus("Saved in this browser");
   }
 
+  async function publishMicrosite() {
+    const editor = editorRef.current;
+    if (!editor || publishing) return;
+    setPublishing(true);
+    setStatus("Compiling and publishing microsite snapshot…");
+    try {
+      const project = editor.getProjectData() as unknown as Record<
+        string,
+        unknown
+      >;
+      const result = await publishMicrositeSnapshot({
+        eventId,
+        slug: siteId,
+        projectData: project,
+        expectedRevision: draftRevisionRef.current,
+      });
+      if (!result.ok) {
+        setStatus(`Publish failed: ${result.error}`);
+        setPublishing(false);
+        return;
+      }
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(
+          `momentus:published:${siteId || "amara-luca"}`,
+          JSON.stringify({
+            project,
+            publishedAt: new Date().toISOString(),
+            revision: result.revision,
+            url: result.url,
+          }),
+        );
+      }
+      draftRevisionRef.current = result.revision;
+      setPublishedUrl(result.url);
+      setStatus(`Published successfully! · Revision ${result.revision}`);
+    } catch {
+      setStatus("Publishing failed · please retry");
+    } finally {
+      setPublishing(false);
+    }
+  }
+
   function downloadRecoveryCopy() {
     const data = editorRef.current?.getProjectData();
     if (!data || !eventId) return;
@@ -1346,6 +1390,21 @@ export function DesignerStudio({
             Save draft
           </button>
           <button
+            className="designer-save"
+            data-testid="designer-publish-btn"
+            disabled={!ready || publishing}
+            onClick={() => void publishMicrosite()}
+            style={{
+              backgroundColor: "#19352d",
+              borderColor: "#c8a870",
+              color: "#f5f0e8",
+              fontWeight: 600,
+            }}
+            type="button"
+          >
+            {publishing ? "Publishing…" : "Publish Live 🚀"}
+          </button>
+          <button
             className="designer-quiet-link"
             disabled={!ready}
             onClick={() => command("preview")}
@@ -1365,6 +1424,69 @@ export function DesignerStudio({
           Exit
         </Link>
       </header>
+      {publishedUrl && (
+        <aside
+          aria-label="Published notification"
+          data-testid="published-banner"
+          style={{
+            alignItems: "center",
+            backgroundColor: "#0c2820",
+            borderBottom: "1px solid #c8a870",
+            color: "#f5f0e8",
+            display: "flex",
+            fontSize: "0.85rem",
+            justifyContent: "space-between",
+            padding: "8px 20px",
+            zIndex: 30,
+          }}
+        >
+          <span>
+            ✨ <strong>Live Snapshot Published:</strong> Guests and clients can
+            view your experience at{" "}
+            <code
+              style={{
+                color: "#c8a870",
+                background: "rgba(200,168,112,0.15)",
+                padding: "2px 6px",
+                borderRadius: "3px",
+              }}
+            >
+              {publishedUrl}
+            </code>
+          </span>
+          <div style={{ alignItems: "center", display: "flex", gap: "10px" }}>
+            <a
+              href={publishedUrl}
+              rel="noopener noreferrer"
+              style={{
+                backgroundColor: "#c8a870",
+                borderRadius: "4px",
+                color: "#0c2820",
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                padding: "4px 12px",
+                textDecoration: "none",
+              }}
+              target="_blank"
+            >
+              Open Live Microsite ↗
+            </a>
+            <button
+              onClick={() => setPublishedUrl(null)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "#e8ded1",
+                cursor: "pointer",
+                fontSize: "1rem",
+              }}
+              type="button"
+            >
+              ✕
+            </button>
+          </div>
+        </aside>
+      )}
       <div className="designer-workbench">
         <aside className="designer-sidebar designer-left">
           <nav className="designer-tabs" aria-label="Designer tools">

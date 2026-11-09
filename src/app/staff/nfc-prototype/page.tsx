@@ -26,6 +26,29 @@ export default async function StaffNfcPrototypePage() {
           </form>
         </div>
       </header>
+      <div style={{ maxWidth: "680px", margin: "20px auto 0 auto", padding: "14px 20px", backgroundColor: "#19352d", borderRadius: "8px", border: "1px solid #c8a870", display: "flex", justifyContent: "space-between", alignItems: "center", color: "#f5f0e8" }}>
+        <div>
+          <strong style={{ color: "#c8a870" }}>✨ Live Event Station Scanner PWA</strong>
+          <p style={{ margin: "4px 0 0 0", fontSize: "0.85rem", color: "#e8ded1" }}>
+            Equip turnstile staff with station PIN locks, Web Audio synthesized chimes, and instant duplicate protection.
+          </p>
+        </div>
+        <Link
+          href="/staff/station-scanner"
+          style={{
+            backgroundColor: "#c8a870",
+            color: "#0c2820",
+            padding: "8px 14px",
+            borderRadius: "6px",
+            textDecoration: "none",
+            fontWeight: 700,
+            fontSize: "0.85rem",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Launch PWA →
+        </Link>
+      </div>
       <StaffNfcPrototype />
     </main>
   );

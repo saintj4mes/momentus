@@ -265,3 +265,30 @@ The user requested additive database design/migration authoring, transaction-saf
 - Migration history on the configured remote is unknown. No connection, migration, service installation, or database runtime test is authorized by U13. The approval template and rollback/restore approach are in `docs/DATABASE_BATCH5_DESIGN.md`.
 - Open registrations support guest cancellation through the original high-entropy idempotency key as an event-scoped bearer capability; only the digest is stored. The client must generate and securely retain that key. Application rate limiting/CAPTCHA and key recovery remain pending.
 - Acceptance impact: authored SQL/schema checks are static preparation only. Cross-tenant isolation, private/open registration persistence, final-seat concurrency, retry behavior, status transitions, restore, and Supabase RLS remain unchecked until executed against an independently confirmed disposable synthetic target after explicit approval.
+
+## User requirement U14 — SaaS platform transformation and commercial foundation
+
+The user explicitly requested implementing the SaaS transformation roadmap, turning MOMENTUS into a full commercial multi-tenant SaaS platform. This includes:
+1. Multi-tenant commercial tiers: Per-Event Passes (Bespoke Celebration, Grand Gathering) and Recurring Agency Subscriptions (Starter Agency, Agency Pro, Enterprise) with capacity, turnstile, and storage quotas.
+2. Billing and hardware commerce: Pluggable payment abstraction (Stripe + regional PayMongo/GCash/Maya) with deterministic local-first billing simulator for testing and development, alongside NFC keepsake card pack fulfillment.
+3. Microsite publishing engine: Immutable versioned snapshot publishing from Designer Studio to `microsite_versions`, rendering pre-rendered sanitized HTML/CSS with edge/ISR caching and dynamic interactive client islands.
+4. Custom domain & multi-tenant routing: Next.js proxy middleware host-header resolution for custom domains (`rsvp.client.com`) and wildcard tenant subdomains (`client.momentus.events`).
+5. Event-day staff scanner PWA: Mobile-optimized station-scoped scanner with station PINs (turnstile, banquet seating, sommelier), Web NFC on Android Chrome, QR camera fallback, and Web Audio synthesized chimes/buzzers for instant operator confirmation.
+6. Durable notification outbox worker: Worker architecture processing pending `notification_outbox` rows with idempotency, exponential backoff retries, and multi-channel dispatch (Email via Resend/SMTP and mobile SMS/WhatsApp pass notifications).
+7. Modular monolith integrity: Business features live in `src/modules/*` (`billing`, `microsites`, `nfc`, `notifications`, `organizations`, `platform`) with named async use cases, strict server-side validation, and zero trusting of client claims.
+
+- Acceptance impact: Add comprehensive automated tests covering plan selection, simulated checkout, microsite publishing, custom domain host matching, station-scoped scanner check-in with audio feedback, and outbox delivery processing. Database migrations for billing tables are prepared alongside synthetic multi-tenant test suites.
+
+## User requirement U15 — Unified Hybrid Event Studio and 5-stage lifecycle pipeline
+
+Following the `/grill-me` architectural review, the user directed proceeding with the consolidation of the admin and organizer layers into a unified operational Event Studio:
+1. Unified Hybrid Event Studio (`src/modules/studio`): Eliminates the separation between the browser-only local demo console and the minimal organizer view by providing a single production-ready dashboard. Authenticated users connect directly to PostgreSQL/Supabase, while unauthenticated or local development workflows fall back to synthetic demo fixtures.
+2. 5-Stage Guided Lifecycle Pipeline: Structures event operations into five progressive milestones with status indicators and readiness checklists:
+   - Stage 01 (Setup & Plan): Event metadata, plan licensing quotas, and custom domain / wildcard subdomain routing.
+   - Stage 02 (Microsite Studio): Direct GrapesJS visual designer integration, published snapshot cache status, and interactive React RSVP Island embed.
+   - Stage 03 (Guests & Seating): Household party management, companion allowances, dietary allergy registry, table seating assignments, and CSV import/export.
+   - Stage 04 (NFC Cards & QR): Dual-mode credential production featuring an in-browser Web NFC / USB tap-to-program wizard with Web Audio acoustic pairing chimes, alongside a bulk printable QR badge manifest export.
+   - Stage 05 (Live Operations & Memories): Real-time Turnstile Command Center with live turnout meters, station throughput gauges (Gate, Seating, Catering, Bar), 1-click supervisor manual VIP lookup & override, and post-event memories album controls with 30-day sensitive privacy purge countdown.
+3. Acceptance impact: Verified through automated Playwright end-to-end tests (`e2e/unified-studio.spec.ts` and `e2e/saas-platform.spec.ts`) asserting full traversal across all five stages, quota meters, NFC encoding simulation, and supervisor override.
+
+

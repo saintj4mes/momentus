@@ -536,6 +536,7 @@ export function PlatformManagement({
         <nav aria-label="Platform workspace">
           <Link href="/admin/clients">Clients</Link>
           <Link href="/admin/events">Events</Link>
+          <Link href="/admin/billing">Billing &amp; Plans</Link>
           <Link href="/admin/onboarding">Onboarding</Link>
         </nav>
       </header>

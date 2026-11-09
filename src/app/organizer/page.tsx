@@ -42,6 +42,12 @@ export default async function OrganizerPage({
           <span>MOMENTUS</span>
         </Link>
         <div className="account-menu">
+          <Link href="/staff/station-scanner" className="quiet-button">
+            Staff Scanner PWA
+          </Link>
+          <Link href="/organizer/billing" className="quiet-button">
+            Billing &amp; Plans
+          </Link>
           <span>{auth.user.email}</span>
           <form action={signOut}>
             <button className="quiet-button" type="submit">

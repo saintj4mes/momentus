@@ -8,7 +8,6 @@ type ViewportMode = "desktop" | "tablet" | "mobile";
 
 export function DesignerShowcase() {
   const [activeViewport, setActiveViewport] = useState<ViewportMode>("desktop");
-  const [activeTheme, setActiveTheme] = useState("editorial");
 
   return (
     <section

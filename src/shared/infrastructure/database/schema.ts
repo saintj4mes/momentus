@@ -797,3 +797,103 @@ export const notificationOutbox = pgTable(
     ),
   ],
 );
+
+// -----------------------------------------------------------------------------
+// SaaS Subscription Plans & Commercial Billing
+// -----------------------------------------------------------------------------
+export const subscriptionPlans = pgTable("subscription_plans", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  description: text("description").notNull(),
+  priceMonthly: integer("price_monthly").notNull(),
+  priceAnnual: integer("price_annual").notNull(),
+  currency: text("currency").notNull().default("USD"),
+  maxEvents: integer("max_events").notNull(),
+  maxGuestsPerEvent: integer("max_guests_per_event").notNull(),
+  features: jsonb("features").notNull().default([]),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const organizationSubscriptions = pgTable("organization_subscriptions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  organizationId: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  planId: text("plan_id").notNull(),
+  status: text("status").notNull().default("active"),
+  billingInterval: text("billing_interval").notNull().default("month"),
+  currentPeriodStart: timestamp("current_period_start", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  currentPeriodEnd: timestamp("current_period_end", {
+    withTimezone: true,
+  }).notNull(),
+  cancelAtPeriodEnd: boolean("cancel_at_period_end").notNull().default(false),
+  stripeCustomerId: text("stripe_customer_id"),
+  stripeSubscriptionId: text("stripe_subscription_id"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const eventBillingPurchases = pgTable("event_billing_purchases", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  organizationId: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  eventId: uuid("event_id")
+    .notNull()
+    .references(() => events.id, { onDelete: "cascade" }),
+  planId: text("plan_id").notNull(),
+  amount: integer("amount").notNull(),
+  currency: text("currency").notNull().default("USD"),
+  guestAllowance: integer("guest_allowance").notNull(),
+  paymentProvider: text("payment_provider").notNull(),
+  externalReference: text("external_reference"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const hardwareOrders = pgTable("hardware_orders", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  organizationId: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  eventId: uuid("event_id").references(() => events.id, {
+    onDelete: "set null",
+  }),
+  productId: text("product_id").notNull(),
+  quantity: integer("quantity").notNull(),
+  unitPrice: integer("unit_price").notNull(),
+  totalPrice: integer("total_price").notNull(),
+  currency: text("currency").notNull().default("USD"),
+  shippingAddress: jsonb("shipping_address").notNull(),
+  status: text("status").notNull().default("processing"),
+  trackingNumber: text("tracking_number"),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const tenantDomains = pgTable("tenant_domains", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  organizationId: uuid("organization_id")
+    .notNull()
+    .references(() => organizations.id, { onDelete: "cascade" }),
+  eventId: uuid("event_id").references(() => events.id, {
+    onDelete: "cascade",
+  }),
+  hostname: text("hostname").notNull().unique(),
+  subdomain: text("subdomain"),
+  status: text("status").notNull().default("active"),
+  verified: boolean("verified").notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
